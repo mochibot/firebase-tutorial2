@@ -6,6 +6,8 @@ import { compose } from 'redux';
 import Project from '../components/Project';
 
 const ProjectDetails = (props) => {
+  console.log(props.project);
+
   if (!props.auth.uid) {
     return <Redirect to='/signin' />;
   }
@@ -31,10 +33,7 @@ const mapStateToProps = (state, props) => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect(props => {
-    return [{ 
-      collection: 'projects',
-      doc: props.match.params.id,
-    }]
-  })
+  firestoreConnect([{ 
+    collection: 'projects',
+  }])
 )(ProjectDetails);
