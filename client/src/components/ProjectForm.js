@@ -37,7 +37,7 @@ const ProjectForm = (props) => {
   return (
     <form onSubmit={submitHandler}>
       <input name='title' value={input.title} placeholder='Title' onChange={changeHandler}/>
-      <input type='content' value={input.content} placeholder='Content' onChange={changeHandler}/>
+      <input name='content' value={input.content} placeholder='Content' onChange={changeHandler}/>
       <button>Submit</button>
       {error && <div>{error}</div>}
     </form>

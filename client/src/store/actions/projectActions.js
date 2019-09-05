@@ -18,7 +18,7 @@ export const createProject = (project) => (dispatch, getState, { getFirebase, ge
   }).catch(error => {
     dispatch({
       type: CREATE_PROJECT_ERROR,
-      payload: error
+      payload: 'Login error'
     })
   })
 } 

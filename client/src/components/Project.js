@@ -5,8 +5,8 @@ const Project = (props) => {
     <div>
       <h3>{props.project.title}</h3>
       <p>{props.project.content}</p>
-      <p>Posted by {props.project.author}</p>
-      <p>{props.project.date}</p>
+      <p>Posted by {props.project.authorFirstName + ' ' + props.project.authorLastName}</p>
+      <p>{props.project.createdAt}</p>
     </div>
   )
 }
