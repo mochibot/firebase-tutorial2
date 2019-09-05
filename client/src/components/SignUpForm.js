@@ -19,7 +19,7 @@ const SignUpForm = () => {
   }
 
   const validateInput = () => {
-    if (!input.email || !input.password || !firstName || !lastName) {
+    if (!input.email || !input.password || !input.firstName || !input.lastName) {
       setError('Missing required field(s)');
       return false;
     } else {
