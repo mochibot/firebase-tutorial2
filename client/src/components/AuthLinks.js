@@ -4,6 +4,11 @@ import { signOut } from '../store/actions/authActions';
 import { NavLink } from 'react-router-dom';
 
 const AuthLinks = (props) => {
+  const logout = () => {
+    props.signOut();
+    window.location.reload();
+  }
+
   return (
     <ul>
       <li>
@@ -13,7 +18,7 @@ const AuthLinks = (props) => {
         <NavLink to='/create'>Add project</NavLink>
       </li>
       <li>
-        <NavLink onClick={props.signOut} to='/'>Log out</NavLink>
+        <NavLink onClick={logout} to='/'>Log out</NavLink>
       </li>
       <li>
         {props.profile.initials} 

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import ProjectList from '../components/ProjectList';
-import Notification from '../components/Notification';
+import Notifications from '../components/Notifications';
 
 const Dashboard = (props) => {
 
@@ -15,7 +15,7 @@ const Dashboard = (props) => {
   return (
     <div>
       <ProjectList projects={props.projects}/>
-      <Notification />
+      <Notifications notifications={props.notifications}/>
     </div>
   )
 }
@@ -23,13 +23,21 @@ const Dashboard = (props) => {
 const mapStateToProps = (state) => {
   return {
     projects: state.firestore.ordered.projects,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    notifications: state.firestore.ordered.notifications
   }  
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'projects' }
+    { 
+      collection: 'projects',  
+      orderBy: ['createdAt', 'desc']       //order by time
+    }, 
+    { collection: 'notifications', 
+      limit: 3,                       //limit to 3 docs
+      orderBy: ['time', 'desc'] 
+    }  
   ])
 )(Dashboard);
